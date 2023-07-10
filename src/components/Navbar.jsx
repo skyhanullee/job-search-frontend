@@ -30,7 +30,7 @@ function Navbar() {
       <nav className='top-nav'>
         <div className="nav-title-container">
           <img src={adzunaIcon} alt='adzuna logo' id='adzuna-icon' />
-          <h2 id='nav-title'>Job Search via Adzuna</h2>
+          <h2 id='nav-title'>Job Search</h2>
         </div>
         <ul className='links-container'>
           <li className="nav-link" id='home-link'>
