@@ -1,19 +1,12 @@
 import { Icon } from '@iconify/react';
 import JobLink from './JobLink';
-// import { useState, useEffect, useContext } from "react"
-// import UserContext from '../context/UserContext';
 
 function JobListing({ job }) {
   const { title, location, company, salary, createdAt, jobId, description, latitude, longitude, redirect_url, isBookmarked, isAdzuna } = job;
   const dateCreated = new Date(createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
   const salaryListing = salary?.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
-  // const { user, setUser } = useContext(UserContext);
-  // const { isBookmarked, setIsBookmarked } = useState(false);
-  // console.log(job);
-
   const addToFavorites = async () => {
-    // const { title, location, company, salary_min, created, id, description, latitude, longitude, redirect_url } = jobObject;
     const job = {
       isBookmarked: true,
       jobId: jobId,
@@ -26,7 +19,6 @@ function JobListing({ job }) {
       latitude: latitude,
       longitude: longitude,
       url: redirect_url,
-      // isAdzuna: false,
       author: 'user',
     };
 
@@ -47,12 +39,10 @@ function JobListing({ job }) {
         }
         if (response.ok) {
           alert(`${title} has been added to saved list`);
-          // console.log('new job added', response.json());
-          // setIsBookmarked(true);
+
         }
       })
       .then(data => {
-        // console.log(data);
         if (data !== undefined) {
           alert(data.message);
         }
@@ -73,15 +63,11 @@ function JobListing({ job }) {
     })
       .then(response => {
         if (response.status === 409 || !response.ok) {
-          // alert('Something went wrong with adding to the list.');
           return response.json();
         }
         if (response.ok) {
           alert(`${title} has been removed from saved list`);
-          // console.log('job removed', response.json());
-          // setIsBookmarked(true);
           window.location.reload(); // to refresh the saved list, should change later to re-render state instead
-          // return response.json();
         }
       })
       .then(data => {
@@ -112,12 +98,6 @@ function JobListing({ job }) {
           icon={isBookmarked ? "material-symbols:bookmark" : "material-symbols:bookmark-outline"}
           onClick={handleOnClick}
         />
-        {/* <Icon
-          className='icon'
-          id='delete-icon'
-          icon="material-symbols:delete-outline"
-          onClick={handleOnClick}
-        /> */}
       </div>
       <hr />
       <div className='job-listing-details'>

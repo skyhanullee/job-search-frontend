@@ -16,7 +16,6 @@ function UserJobPosts() {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log(data);
         setJobPosts(data);
       });
 
@@ -27,11 +26,8 @@ function UserJobPosts() {
 
   const jobPostsList = jobPosts.map((jobPost) => {
     return (
-      // <li>{jobPost.title}</li>
       <li key={jobPost._id}>
-        {/* <Link to={`/job/${jobPost._id}`} state={{ data: { job: jobPost } }}> */}
         <JobListing job={jobPost} />
-        {/* </Link> */}
       </li>
     )
   })

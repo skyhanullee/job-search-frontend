@@ -30,8 +30,6 @@ function CreateJobPage() {
 
     const token = `Bearer ${localStorage.getItem('token')}`
 
-    // console.log(JSON.stringify(newJobPost));
-
     fetch('http://127.0.0.1:4000/jobs', {
       method: 'POST',
       body: JSON.stringify(newJobPost),
@@ -108,27 +106,7 @@ function CreateJobPage() {
           required
         />
         <br />
-        {/* 
-        <label htmlFor="latitude">Latitude</label>
-        <input
-          type="number"
-          id="latitude"
-          value={latitude}
-          onChange={(e) => setLatitude(e.target.value)}
-        />
-        <br />
-
-        <label htmlFor="longitude">Longitude</label>
-        <input
-          type="number"
-          id="longitude"
-          value={longitude}
-          onChange={(e) => setLongitude(e.target.value)}
-        />
-        <br /> */}
-
         <button type="submit">Submit</button>
-
       </form>
     </div>
   )

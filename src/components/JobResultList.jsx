@@ -3,9 +3,7 @@ import { renderToString } from 'react-dom/server';
 import JobResultContext from '../context/JobResultContext'
 import MapContext from '../context/MapContext';
 import EmptyListPage from '../pages/EmptyListPage';
-import LoadingPage from '../pages/LoadingPage';
 import JobCard from './JobCard';
-// import Marker from './Marker';
 import MarkerCard from './MarkerCard';
 
 function createMarker(job, map, bounds, infowindow) {
@@ -33,13 +31,10 @@ function createMarker(job, map, bounds, infowindow) {
   })
 }
 function JobResultList({ jobMarkerList, setJobMarkerList }) {
-  // const { jobResult, jobMarkerList, setJobMarkerList } = useContext(JobResultContext);
   const { jobResult } = useContext(JobResultContext);
   const { map, bounds, infowindow } = useContext(MapContext);
-  // const [jobMarkerList, setJobMarkerList] = useState([]);
   const [emptyList, toggleEmptyList] = useState(true);
 
-  // console.log(jobMarkerList);
   useEffect(() => {
     setJobMarkerList([]);
     jobResult.results.forEach((job) => {

@@ -18,8 +18,6 @@ function SignInPage() {
       password
     };
 
-    // const token = localStorage.getItem('token');
-
     const signInRes = await fetch('http://127.0.0.1:4000/login', {
       method: 'POST',
       body: JSON.stringify(loginUser),
@@ -29,13 +27,13 @@ function SignInPage() {
       })
     });
     const resJson = await signInRes.json();
-    // console.log(resJson);
     if (!signInRes.ok) {
       console.log('POST: did not send to mongo db');
     }
     // when successful, token is passed in signInRes
     if (resJson.token) {
       alert(`Login successful`);
+
       // clear any token in localStorage
       localStorage.removeItem('token');
 
@@ -61,11 +59,6 @@ function SignInPage() {
           placeholder="Email"
           required
         />
-        {/* <input type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-        /> */}
         <input type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

@@ -6,11 +6,6 @@ function JobCard({ job }) {
   const dateCreated = new Date(created).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
   const salaryListing = salary_min?.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
-  // const [user, setUser] = useState({});
-  // const { user, setUser } = useContext(UserContext);
-  // const { isBookmarked, setIsBookmarked } = useState(false);
-  console.log(job);
-
   const addToFavorites = async () => {
 
     const jobToSave = {
@@ -29,9 +24,6 @@ function JobCard({ job }) {
       author: 'adzuna',
     };
 
-    // console.log(jobToSave.jobId);
-
-
     const token = `Bearer ${localStorage.getItem('token')}`
 
     await fetch('http://127.0.0.1:4000/bookmarklist/update', {
@@ -43,17 +35,12 @@ function JobCard({ job }) {
       })
     })
       .then(response => {
-        if (!response.ok) {
-          console.log('POST: did not send to mongo db');
-        }
         if (response.status === 409 || !response.ok) {
           // alert('Something went wrong with adding to the list.');
           return response.json()
         }
         if (response.ok) {
           alert(`${title} has been added to saved list`);
-          // return response.json();
-          // setIsBookmarked(true);
         }
       })
       .then(data => {
