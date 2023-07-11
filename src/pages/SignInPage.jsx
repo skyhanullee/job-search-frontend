@@ -10,6 +10,7 @@ function SignInPage() {
   const [password, setPassword] = useState('');
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const AWS_EC2_URL = process.env.REACT_APP_AWS_EC2_URL;
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ function SignInPage() {
       password
     };
 
-    const signInRes = await fetch(`${REACT_APP_AWS_EC2_URL}:4000/login`, {
+    const signInRes = await fetch(`${AWS_EC2_URL}/login`, {
       method: 'POST',
       body: JSON.stringify(loginUser),
       headers: new Headers({

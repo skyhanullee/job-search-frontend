@@ -25,8 +25,9 @@ function JobCard({ job }) {
     };
 
     const token = `Bearer ${localStorage.getItem('token')}`
+    const AWS_EC2_URL = process.env.REACT_APP_AWS_EC2_URL;
 
-    await fetch(`${REACT_APP_AWS_EC2_URL}:4000/bookmarklist/update`, {
+    await fetch(`${AWS_EC2_URL}/bookmarklist/update`, {
       method: 'PUT',
       body: JSON.stringify(jobToSave),
       headers: new Headers({

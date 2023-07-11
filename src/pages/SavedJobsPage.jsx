@@ -7,9 +7,10 @@ export default function SavedJobsPage() {
   const [job, setJob] = useState();
   const [jobPosts, setJobPosts] = useState([]);
   const token = `Bearer ${localStorage.getItem('token')}`;
+  const AWS_EC2_URL = process.env.REACT_APP_AWS_EC2_URL;
 
   const getAllJobPosts = () => {
-    fetch(`${REACT_APP_AWS_EC2_URL}:4000/bookmarklist`, {
+    fetch(`${AWS_EC2_URL}/bookmarklist`, {
       method: 'GET',
       headers: new Headers({
         'Authorization': token,

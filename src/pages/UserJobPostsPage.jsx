@@ -7,8 +7,10 @@ import JobListing from "../components/JobListing";
 function UserJobPosts() {
   const { user, setUser } = useContext(UserContext);
   const [jobPosts, setJobPosts] = useState([]);
+  const AWS_EC2_URL = process.env.REACT_APP_AWS_EC2_URL;
+
   const getAllJobPosts = () => {
-    fetch(`${REACT_APP_AWS_EC2_URL}:4000/jobs`, {
+    fetch(`${AWS_EC2_URL}/jobs`, {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json'
