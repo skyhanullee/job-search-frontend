@@ -6,28 +6,28 @@ function JobListing({ job }) {
   const dateCreated = new Date(createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
   const salaryListing = salary?.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
+  const jobData = {
+    isBookmarked: true,
+    jobId: jobId,
+    title: title,
+    description: description,
+    location: location.display_name,
+    company: company.display_name,
+    salary: salary,
+    createdAt: createdAt,
+    latitude: latitude,
+    longitude: longitude,
+    url: redirect_url,
+    author: 'user',
+  };
   const addToFavorites = async () => {
-    const job = {
-      isBookmarked: true,
-      jobId: jobId,
-      title: title,
-      description: description,
-      location: location.display_name,
-      company: company.display_name,
-      salary: salary,
-      createdAt: createdAt,
-      latitude: latitude,
-      longitude: longitude,
-      url: redirect_url,
-      author: 'user',
-    };
 
     const token = `Bearer ${localStorage.getItem('token')}`
     const API_URL = process.env.REACT_APP_API_URL;
 
     await fetch(`${API_URL}/bookmarklist/update`, {
       method: 'PUT',
-      body: JSON.stringify(job),
+      body: JSON.stringify(jobData),
       headers: new Headers({
         'Content-Type': 'application/json',
         "Authorization": token
@@ -57,7 +57,7 @@ function JobListing({ job }) {
 
     await fetch(`${API_URL}:4000/bookmarklist/delete`, {
       method: 'DELETE',
-      body: JSON.stringify(job),
+      body: JSON.stringify(jobData),
       headers: new Headers({
         'Content-Type': 'application/json',
         "Authorization": token
