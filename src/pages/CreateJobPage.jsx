@@ -29,9 +29,9 @@ function CreateJobPage() {
     };
 
     const token = `Bearer ${localStorage.getItem('token')}`;
-    const AWS_EC2_URL = process.env.REACT_APP_AWS_EC2_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
 
-    fetch(`${AWS_EC2_URL}/jobs`, {
+    fetch(`${API_URL}/jobs`, {
       method: 'POST',
       body: JSON.stringify(newJobPost),
       headers: {

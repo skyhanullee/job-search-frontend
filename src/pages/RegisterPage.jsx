@@ -15,9 +15,9 @@ function RegisterPage() {
       password
     };
 
-    const AWS_EC2_URL = process.env.REACT_APP_AWS_EC2_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
 
-    const signUpRes = await fetch(`${AWS_EC2_URL}/login/signup`, {
+    const signUpRes = await fetch(`${API_URL}/login/signup`, {
       method: 'POST',
       body: JSON.stringify(newUser),
       headers: new Headers({
