@@ -28,9 +28,10 @@ function CreateJobPage() {
       isAdzuna: false,
     };
 
-    const token = `Bearer ${localStorage.getItem('token')}`
+    const token = `Bearer ${localStorage.getItem('token')}`;
+    const AWS_EC2_URL = process.env.REACT_APP_AWS_EC2_URL;
 
-    fetch('http://127.0.0.1:4000/jobs', {
+    fetch(`${AWS_EC2_URL}/jobs`, {
       method: 'POST',
       body: JSON.stringify(newJobPost),
       headers: {
