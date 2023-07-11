@@ -24,7 +24,7 @@ function JobListing({ job }) {
 
     const token = `Bearer ${localStorage.getItem('token')}`
 
-    await fetch('http://127.0.0.1:4000/bookmarklist/update', {
+    await fetch(`${AWS_EC2_URL}:4000/bookmarklist/update`, {
       method: 'PUT',
       body: JSON.stringify(job),
       headers: new Headers({
@@ -53,7 +53,7 @@ function JobListing({ job }) {
   const removeFromFavorites = async () => {
     const token = `Bearer ${localStorage.getItem('token')}`
 
-    await fetch('http://127.0.0.1:4000/bookmarklist/delete', {
+    await fetch(`${AWS_EC2_URL}:4000/bookmarklist/delete`, {
       method: 'DELETE',
       body: JSON.stringify({ jobId: jobId }),
       headers: new Headers({

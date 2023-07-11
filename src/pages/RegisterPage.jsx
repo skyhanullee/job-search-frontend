@@ -15,7 +15,7 @@ function RegisterPage() {
       password
     };
 
-    const signUpRes = await fetch('http://127.0.0.1:4000/login/signup', {
+    const signUpRes = await fetch(`${AWS_EC2_URL}:4000/login/signup`, {
       method: 'POST',
       body: JSON.stringify(newUser),
       headers: new Headers({

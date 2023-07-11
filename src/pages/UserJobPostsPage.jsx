@@ -8,7 +8,7 @@ function UserJobPosts() {
   const { user, setUser } = useContext(UserContext);
   const [jobPosts, setJobPosts] = useState([]);
   const getAllJobPosts = () => {
-    fetch('http://127.0.0.1:4000/jobs', {
+    fetch(`${AWS_EC2_URL}:4000/jobs`, {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json'
