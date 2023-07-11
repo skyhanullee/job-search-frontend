@@ -55,7 +55,7 @@ function JobListing({ job }) {
     const token = `Bearer ${localStorage.getItem('token')}`
     const API_URL = process.env.REACT_APP_API_URL;
 
-    await fetch(`${API_URL}:4000/bookmarklist/delete`, {
+    await fetch(`${API_URL}/bookmarklist/delete`, {
       method: 'DELETE',
       body: JSON.stringify(jobData),
       headers: new Headers({
