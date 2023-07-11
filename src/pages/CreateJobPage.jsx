@@ -30,7 +30,7 @@ function CreateJobPage() {
 
     const token = `Bearer ${localStorage.getItem('token')}`
 
-    fetch(`${AWS_EC2_URL}:4000/jobs`, {
+    fetch(`${REACT_APP_AWS_EC2_URL}:4000/jobs`, {
       method: 'POST',
       body: JSON.stringify(newJobPost),
       headers: {

@@ -9,7 +9,7 @@ export default function SavedJobsPage() {
   const token = `Bearer ${localStorage.getItem('token')}`;
 
   const getAllJobPosts = () => {
-    fetch(`${AWS_EC2_URL}:4000/bookmarklist`, {
+    fetch(`${REACT_APP_AWS_EC2_URL}:4000/bookmarklist`, {
       method: 'GET',
       headers: new Headers({
         'Authorization': token,

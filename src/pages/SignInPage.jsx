@@ -18,7 +18,7 @@ function SignInPage() {
       password
     };
 
-    const signInRes = await fetch(`${AWS_EC2_URL}:4000/login`, {
+    const signInRes = await fetch(`${REACT_APP_AWS_EC2_URL}:4000/login`, {
       method: 'POST',
       body: JSON.stringify(loginUser),
       headers: new Headers({
