@@ -55,7 +55,7 @@ function JobListing({ job }) {
 
     await fetch('http://127.0.0.1:4000/bookmarklist/delete', {
       method: 'DELETE',
-      body: JSON.stringify({ jobId: jobId }),
+      body: JSON.stringify(job),
       headers: new Headers({
         'Content-Type': 'application/json',
         "Authorization": token
