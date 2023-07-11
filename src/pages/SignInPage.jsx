@@ -35,8 +35,8 @@ function SignInPage() {
     if (resJson.token) {
       alert(`Login successful`);
 
-      // clear any token in localStorage
-      localStorage.removeItem('token');
+      // // clear any token in localStorage
+      // localStorage.removeItem('token');
 
       // store into local storage
       localStorage.setItem('token', resJson.token);
